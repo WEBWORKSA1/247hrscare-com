@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_build/
+
+Sitemap: https://webworksa1.github.io/247hrscare-com/sitemap.xml
