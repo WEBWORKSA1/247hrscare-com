@@ -56,7 +56,8 @@ p{margin:0 0 1em}
 .icon-btn{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer}
 .burger{display:none}
 @media (max-width:1180px){
-  .burger{display:grid}
+  .site-header{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--surface)}
+  .burger{display:grid;position:relative;z-index:65}
   .menu{position:fixed;inset:0 0 0 auto;width:min(360px,88vw);flex-direction:column;align-items:stretch;background:var(--surface);padding:84px 16px 24px;box-shadow:var(--shadow-lg);transform:translateX(105%);visibility:hidden;transition:.25s;overflow:auto;z-index:60}
   .menu.open{visibility:visible}
   .menu.open{transform:none}
@@ -64,7 +65,7 @@ p{margin:0 0 1em}
   .menu li.open>.sub{display:block}
   .nav-actions .btn-cta{display:none}
 }
-.scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:55;display:none}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:45;display:none}
 .scrim.show{display:block}
 
 /* Buttons */
