@@ -92,12 +92,9 @@ def head(title, desc, path, r, schema=None, og_type="website"):
 {sch}</head>
 '''
 
-def header(r):
+def header_nav(r):
     svc = "".join(f'<li><a href="{r}{p}">{e(n)}</a></li>' for p, n in SERVICES_NAV)
-    return f'''<a class="skip" href="#main">Skip to content</a>
-<div class="topbar">Contact, if you are interested in this website / domain name / Sponsorship / Advertisement / Partnership — <a href="{BROKER_URL}" target="_blank" rel="noopener">web.works/contact</a></div>
-<div class="emergency"><b>Medical emergency?</b> Call 911 (US/Canada) or your local emergency number now. 247hrsCare is an information &amp; care-matching service, not an emergency provider.</div>
-<header class="site-header">
+    return f'''<header class="site-header">
  <div class="container nav">
   <a class="logo" href="{r}index.html" aria-label="247hrsCare home">{LOGO_MARK}<span>247hrs<b>Care</b><small>Care guidance, around the clock</small></span></a>
   <nav aria-label="Main">
@@ -123,6 +120,15 @@ def header(r):
  </div>
 </header>
 <div class="scrim"></div>
+'''
+
+def header(r):
+    """Static top bars (always visible) + placeholder; the nav header is injected synchronously by assets/js/chrome.js."""
+    return f'''<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">Contact, if you are interested in this website / domain name / Sponsorship / Advertisement / Partnership — <a href="{BROKER_URL}" target="_blank" rel="noopener">web.works/contact</a></div>
+<div class="emergency"><b>Medical emergency?</b> Call 911 (US/Canada) or your local emergency number now. 247hrsCare is an information &amp; care-matching service, not an emergency provider.</div>
+<div id="site-header" class="site-header" style="min-height:71px"><div class="container nav"><a class="logo" href="{r}index.html">247hrs<b>Care</b></a><a class="btn btn-cta btn-sm" href="{r}get-care.html">Free Care Match</a></div></div>
+<script src="{r}assets/js/chrome.js"></script>
 '''
 
 def footer_full(r):
@@ -184,8 +190,8 @@ def footer(r):
     return f'''
 <div id="site-chrome"></div>
 <noscript><footer class="site-footer"><div class="container fbottom"><span>© 2026 247hrsCare.com</span><span><a href="{r}privacy.html">Privacy</a> · <a href="{r}terms.html">Terms</a> · <a href="{r}disclaimer.html">Disclaimer</a> · <a href="{r}trademark.html">Trademark &amp; Copyright</a> · <a href="{r}contact.html">Contact</a></span></div></footer></noscript>
+<script>window.__chromeFooter&&__chromeFooter();</script>
 <script src="{r}assets/js/config.js"></script>
-<script src="{r}assets/js/chrome.js"></script>
 <script src="{r}assets/js/main.js" defer></script>
 </body>
 </html>
