@@ -15,8 +15,13 @@ assets/js/main.js      forms, quiz, calculator, ads, consent, video lite-embeds
 _build/                Python generator (source of truth for page HTML)
 ```
 
+## Branches and deploy
+* `main` holds the source: the generator, CSS, JS and config.
+* `gh-pages` holds the built, published site. GitHub Pages serves it from **Settings → Pages → Deploy from a branch → `gh-pages` / root**.
+* **To redeploy:** run `python3.12 _build/build.py`, then copy the generated `*.html`, `services/`, `guides/`, `assets/`, `sitemap.xml`, `robots.txt`, `ads.txt`, `manifest.webmanifest` and `.nojekyll` to the `gh-pages` branch.
+
 ## Editing
-* **Content and page HTML:** edit `_build/*.py`, then run `python3.12 _build/build.py` from the repo root. Any Python 3.12 or later works.
+* **Content and page HTML:** edit `_build/*.py`, then run `python3.12 _build/build.py` from the repo root. Any Python 3.12 or later works. The shared footer, cookie banner, sticky CTA and exit modal are generated into `assets/js/chrome.js`.
 * **Monetization settings (no rebuild needed):** edit `assets/js/config.js`
   * `adsenseClient`: your `ca-pub-…` ID. House ads are replaced by AdSense automatically. Also update `ads.txt`.
   * `ga4`: your Google Analytics 4 ID.
