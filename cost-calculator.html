@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Care Cost Calculator — In-Home vs Assisted Living vs Nursing Home | 247hrsCare</title>
+<meta name="description" content="Free care cost calculator: estimate in-home, overnight and 24-hour care costs and compare with assisted living and nursing homes using 2025 medians.">
+<link rel="canonical" href="https://webworksa1.github.io/247hrscare-com/cost-calculator.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0e7c86">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="247hrsCare">
+<meta property="og:title" content="Care Cost Calculator — In-Home vs Assisted Living vs Nursing Home | 247hrsCare">
+<meta property="og:description" content="Free care cost calculator: estimate in-home, overnight and 24-hour care costs and compare with assisted living and nursing homes using 2025 medians.">
+<meta property="og:url" content="https://webworksa1.github.io/247hrscare-com/cost-calculator.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-root="">
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">Contact, if you are interested in this website / domain name / Sponsorship / Advertisement / Partnership — <a href="https://web.works/contact" target="_blank" rel="noopener">web.works/contact</a></div>
+<div class="emergency"><b>Medical emergency?</b> Call 911 (US/Canada) or your local emergency number now. 247hrsCare is an information &amp; care-matching service, not an emergency provider.</div>
+<div id="site-header" class="site-header" style="min-height:71px"><div class="container nav"><a class="logo" href="index.html">247hrs<b>Care</b></a><a class="btn btn-cta btn-sm" href="get-care.html">Free Care Match</a></div></div>
+<script src="assets/js/chrome.js"></script>
+<main id="main">
+
+<section class="page-hero"><div class="container">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> › <span>Care Cost Calculator</span></nav>
+<span class="eyebrow">Updated with 2025 national medians</span>
+<h1>Care Cost Calculator</h1>
+<p class="lead">Estimate the monthly and annual cost of in-home care for your schedule, then compare it with assisted living and nursing homes.</p>
+</div></section>
+<section style="padding-top:10px"><div class="container lead-wrap">
+<div class="card" id="calc">
+<div class="form">
+<div><label for="c-hours">Hours of care per day: <b id="c-hours-v">8</b></label><input id="c-hours" type="range" min="2" max="24" value="8"></div>
+<div><label for="c-days">Days per week: <b id="c-days-v">7</b></label><input id="c-days" type="range" min="1" max="7" value="7"></div>
+<div><label for="c-rate">Hourly rate: <b id="c-rate-v">$35</b></label><input id="c-rate" type="range" min="18" max="60" value="35"><span class="hint">U.S. national median ≈ $35/hr (CareScout 2025). Adjust to local quotes.</span></div>
+<div><label for="c-region">Region cost level</label><select id="c-region"><option value="0.8">Lower-cost area (−20%)</option><option value="1" selected>Average</option><option value="1.25">Higher-cost area (+25%)</option><option value="1.45">Major metro (+45%)</option></select></div>
+</div>
+<hr>
+<div class="result-box" aria-live="polite">
+<div class="grid g2"><div><span class="muted">Estimated monthly</span><div class="big-num" id="c-month">—</div></div><div><span class="muted">Estimated annual</span><div class="big-num" id="c-year" style="color:var(--accent)">—</div></div></div>
+<div class="bars" id="c-bars"></div>
+<p id="c-tip" style="margin:14px 0 0;font-weight:600"></p>
+</div>
+<p class="hint" style="margin-top:12px">Estimates only. Assisted living $6,200/mo and nursing home $315/$355 per day are U.S. national medians (CareScout Cost of Care Survey 2025), scaled by the region setting.</p>
+</div>
+<aside class="aside-sticky"><div class="card" id="quick-match">
+<span class="tag">Free · No obligation</span>
+<h3>Get real local quotes — free</h3>
+<p>Tell us where and when. A care advisor aims to reply within one business day — urgent requests first.</p>
+<form class="form" data-form data-subject="Quick care match request (general)" data-redirect="thank-you.html">
+<input type="hidden" name="form" value="quick-match"><input type="hidden" name="care_type" value=""><input class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div><label for="qm-name">Your name</label><input id="qm-name" name="name" autocomplete="name" required></div>
+<div class="row2"><div><label for="qm-phone">Phone</label><input id="qm-phone" type="tel" name="phone" autocomplete="tel" required></div>
+<div><label for="qm-zip">ZIP / Postal code</label><input id="qm-zip" name="zip" autocomplete="postal-code" required></div></div>
+<div><label for="qm-email">Email</label><input id="qm-email" type="email" name="email" autocomplete="email" required></div>
+<div><label for="qm-when">When is care needed?</label><select id="qm-when" name="timeline" required><option value="">Select…</option><option>Immediately (within 48 hours)</option><option>Within 2 weeks</option><option>Within 1–3 months</option><option>Just researching</option></select></div>
+<label class="check"><input type="checkbox" name="consent" value="yes" required> <span>I agree to be contacted by 247hrsCare and up to 3 vetted care partners by phone, text or email about my request. Consent is not a condition of any purchase. I have read the <a href="privacy.html">Privacy Policy</a> and <a href="how-we-make-money.html">How We Make Money</a>.</span></label>
+<button class="btn btn-cta btn-block" type="submit">Get my free care match</button>
+<div class="form-msg" role="status"></div>
+</form>
+</div></aside>
+</div></section>
+<div class="container"><div class="ad-slot" data-slot="calc" aria-label="Advertisement"></div></div>
+<section><div class="container"><div class="cta-band reveal">
+<div><h2>Want help paying for care?</h2><p class="mb0">Our guide covers long-term care insurance, VA benefits, Medicaid waivers and more.</p></div>
+<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end"><a class="btn btn-cta" href="care-quiz.html">Take the free quiz</a><a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" href="get-care.html">Talk to an advisor</a></div>
+</div></div></section>
+</main>
+<div id="site-chrome"></div>
+<noscript><footer class="site-footer"><div class="container fbottom"><span>© 2026 247hrsCare.com</span><span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="trademark.html">Trademark &amp; Copyright</a> · <a href="contact.html">Contact</a></span></div></footer></noscript>
+<script>window.__chromeFooter&&__chromeFooter();</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
