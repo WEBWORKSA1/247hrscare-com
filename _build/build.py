@@ -1,0 +1,48 @@
+"""Build 247hrsCare.com static site.  Run:  python3.12 _build/build.py   (from repo root)"""
+import os, sys
+sys.path.insert(0, os.path.dirname(__file__))
+from layout import SITE_URL, TODAY
+import pages_main as M, pages_more as P
+from services import SERVICES
+from guides import GUIDES
+
+OUT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+BASE_PATH = "/" + SITE_URL.split("/", 3)[3] + "/" if SITE_URL.count("/") > 2 else "/"
+
+def w(path, content):
+    p = os.path.join(OUT, path); os.makedirs(os.path.dirname(p), exist_ok=True)
+    with open(p, "w", encoding="utf-8") as f: f.write(content)
+
+pages = {}
+pages["index.html"] = M.home()
+pages["get-care.html"] = M.get_care()
+pages["care-quiz.html"] = M.quiz()
+pages["cost-calculator.html"] = M.calculator()
+pages["checklist.html"] = M.checklist()
+pages["thank-you.html"] = M.thank_you()
+nf = M.not_found().replace("<head>", f'<head>\n<base href="{BASE_PATH}">', 1).replace('data-root=""', f'data-root="{BASE_PATH}"')
+pages["404.html"] = nf.replace('content="index,follow,max-image-preview:large"', 'content="noindex"')
+for s in SERVICES:
+    p, h = P.service_page(s); pages[p] = h
+for g in GUIDES:
+    p, h = P.guide_page(g); pages[p] = h
+pages["guides/index.html"] = P.guides_index()
+pages["videos.html"] = P.videos()
+pages["careers.html"] = P.careers()
+pages["contests.html"] = P.contests()
+pages["donate.html"] = P.donate()
+pages["providers.html"] = P.providers()
+pages["advertise.html"] = P.advertise()
+pages["about.html"] = P.about()
+pages["contact.html"] = P.contact()
+pages["faq.html"] = P.faq()
+for slug, (t, d, c) in P.LEGAL.items():
+    pages[slug] = P.legal(slug, t, d, c)
+
+for p, h in pages.items(): w(p, h)
+
+skip = {"thank-you.html", "404.html"}
+urls = "".join(f"<url><loc>{SITE_URL}/{p.replace('index.html','')}</loc><lastmod>{TODAY}</lastmod><priority>{'1.0' if p=='index.html' else '0.8' if p.startswith(('services','guides','get-care')) else '0.6'}</priority></url>\n" for p in sorted(pages) if p not in skip)
+w("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
+w("robots.txt", f"User-agent: *\nAllow: /\nDisallow: /_build/\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+print(f"Built {len(pages)} pages into {OUT}")
