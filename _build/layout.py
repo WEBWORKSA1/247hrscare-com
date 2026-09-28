@@ -83,8 +83,7 @@ def head(title, desc, path, r, schema=None, og_type="website"):
 <meta property="og:title" content="{e(full)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE_URL}/assets/img/og.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="{r}assets/img/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="{r}manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -126,7 +125,7 @@ def header(r):
 <div class="scrim"></div>
 '''
 
-def footer(r):
+def footer_full(r):
     svc = "".join(f'<li><a href="{r}{p}">{e(n)}</a></li>' for p, n in SERVICES_NAV[:6])
     return f'''
 <footer class="site-footer">
@@ -178,7 +177,15 @@ def footer(r):
   </form>
  </div>
 </div>
+'''
+
+def footer(r):
+    """Lean static footer; the full footer, cookie banner, sticky CTA and exit modal are injected by assets/js/chrome.js."""
+    return f'''
+<div id="site-chrome"></div>
+<noscript><footer class="site-footer"><div class="container fbottom"><span>© 2026 247hrsCare.com</span><span><a href="{r}privacy.html">Privacy</a> · <a href="{r}terms.html">Terms</a> · <a href="{r}disclaimer.html">Disclaimer</a> · <a href="{r}trademark.html">Trademark &amp; Copyright</a> · <a href="{r}contact.html">Contact</a></span></div></footer></noscript>
 <script src="{r}assets/js/config.js"></script>
+<script src="{r}assets/js/chrome.js"></script>
 <script src="{r}assets/js/main.js" defer></script>
 </body>
 </html>
